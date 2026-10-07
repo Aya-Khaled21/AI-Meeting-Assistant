@@ -1,0 +1,238 @@
+/* ================================
+   Global App Styling
+   ================================ */
+
+body {
+    font-family: sans-serif;
+}
+
+
+/* ================================
+   Main App
+   ================================ */
+
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124, 92, 255, 0.10),
+            transparent 30%
+        ),
+        #0B1020;
+}
+
+
+/* ================================
+   Main Content Width
+   ================================ */
+
+.block-container {
+    max-width: 1380px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+
+/* ================================
+   Header
+   ================================ */
+
+.meet-header {
+    padding: 0.5rem 0 1.5rem 0;
+}
+
+.brand-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7C5CFF,
+            #38BDF8
+        );
+
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.brand-name {
+    font-size: 1.35rem;
+    font-weight: 750;
+    color: #F8FAFC;
+}
+
+.brand-subtitle {
+    margin-top: 0.25rem;
+    color: #94A3B8;
+    font-size: 0.92rem;
+}
+
+
+/* ================================
+   Hero Upload Section
+   ================================ */
+
+.hero-card {
+    padding: 2rem;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17, 24, 39, 0.96),
+            rgba(15, 23, 42, 0.92)
+        );
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+.hero-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #F8FAFC;
+}
+
+.hero-description {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: #94A3B8;
+    font-size: 0.95rem;
+}
+
+
+/* ================================
+   Section Titles
+   ================================ */
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 0.75rem;
+}
+
+
+/* ================================
+   Stats Cards
+   ================================ */
+
+.stat-card {
+    padding: 1rem 1.1rem;
+    border-radius: 16px;
+
+    background: #111827;
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.stat-label {
+    color: #94A3B8;
+    font-size: 0.8rem;
+}
+
+.stat-value {
+    color: #F8FAFC;
+    font-size: 1.45rem;
+    font-weight: 750;
+    margin-top: 0.15rem;
+}
+
+
+/* ================================
+   Result Cards
+   ================================ */
+
+.result-card {
+    padding: 1.1rem 1.2rem;
+    border-radius: 16px;
+
+    background: #111827;
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+
+    margin-bottom: 1rem;
+}
+
+.result-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+
+    font-size: 1rem;
+    color: #F8FAFC;
+}
+
+
+/* ================================
+   Action Button
+   ================================ */
+
+.stButton > button {
+    border-radius: 12px !important;
+    min-height: 46px;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7C5CFF,
+            #5B7CFF
+        );
+
+    color: white;
+
+    border: none;
+}
+
+.stButton > button:hover {
+    filter: brightness(1.08);
+}
+
+
+/* ================================
+   Download Button
+   ================================ */
+
+.stDownloadButton > button {
+    border-radius: 12px !important;
+    min-height: 44px;
+    font-weight: 700;
+}
+
+
+/* ================================
+   Expander
+   ================================ */
+
+.streamlit-expanderHeader {
+    border-radius: 12px;
+    font-weight: 650;
+}
+
+
+/* ================================
+   Footer
+   ================================ */
+
+.footer {
+    padding-top: 2rem;
+    text-align: center;
+
+    color: #64748B;
+    font-size: 0.8rem;
+}

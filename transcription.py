@@ -1,8 +1,10 @@
 import os
 import tempfile
+import time
 
 from dotenv import load_dotenv
 from google import genai
+from google.genai import errors
 
 
 load_dotenv()
@@ -11,6 +13,7 @@ api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("GEMINI_API_KEY not found.")
+
 
 client = genai.Client(api_key=api_key)
 
@@ -39,20 +42,40 @@ def transcribe_audio(audio_file) -> str:
     try:
         uploaded_file = client.files.upload(file=temp_file_path)
 
-        response = client.models.generate_content(
-            model="gemini-3.1-flash-lite",
-            contents=[
-                (
-                    "Transcribe this meeting recording exactly into text. "
-                    "The uploaded file may be audio or video. "
-                    "Return only the spoken transcript. "
-                    "Do not summarize or analyze the content."
-                ),
-                uploaded_file,
-            ],
+        prompt = (
+            "Transcribe this meeting recording exactly into text. "
+            "The uploaded file may be audio or video. "
+            "Return only the spoken transcript. "
+            "Do not summarize or analyze the content."
         )
 
-        return response.text or ""
+        max_attempts = 3
+
+        for attempt in range(max_attempts):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.1-flash-lite",
+                    contents=[
+                        prompt,
+                        uploaded_file,
+                    ],
+                )
+
+                return response.text or ""
+
+            except errors.ServerError as e:
+
+                # Retry temporary server errors such as 503.
+                if e.code in [500, 502, 503, 504]:
+                    if attempt < max_attempts - 1:
+                        wait_time = 2 ** attempt
+                        time.sleep(wait_time)
+                        continue
+
+                raise RuntimeError(
+                    "Gemini is temporarily unavailable. "
+                    "Please wait a moment and try again."
+                ) from e
 
     finally:
         if os.path.exists(temp_file_path):
